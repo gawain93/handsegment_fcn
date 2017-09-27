@@ -15,8 +15,8 @@ from net_new import fcn32
 import numpy as np
 import pylab as plt
 
-data_path = "/home/dhri-dz/train data"
-model_path = '/home/dhri-dz/train data/my_model_870.h5'
+data_path = "/home/dhri-dz/handsegment/train data"
+model_path = '/home/dhri-dz/handsegment/train data/my_model_1500.h5'
 test_size = 10
 img_height = 256
 img_width = 256
@@ -50,8 +50,8 @@ model.load_weights(model_path)
 predicted1 = []
 predicted1 = model.predict(test_batch)
 
-''' below is used to compare the training results'''
-test_rgb_mask = cv2.imread("/home/dhri-dz/train data/rgb/"+test_list[0])
+'''
+test_rgb_mask = cv2.imread("/home/dhri-dz/handsegment/train data/rgb/"+test_list[0])
 test_rgb = test_rgb_mask
 cv2.imwrite('/home/dhri-dz/Desktop/training result/rgb.jpg', test_rgb)
 test_mask= test_label[0,:,:,0]
@@ -70,3 +70,4 @@ cv2.imshow('image',test_rgb)
 cv2.imwrite('/home/dhri-dz/Desktop/training result/rgbwithmask.jpg', test_rgb_mask)
 cv2.imwrite('/home/dhri-dz/Desktop/training result/groundtruth.jpg', test_mask*255)
 cv2.imwrite('/home/dhri-dz/Desktop/training result/predictmask.jpg', predict_mask*255)
+'''

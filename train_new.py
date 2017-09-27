@@ -19,8 +19,8 @@ from keras.models import model_from_yaml
 
 
 file_list = sorted(os.listdir(os.getcwd()))
-data_path = "/home/dhri-dz/train data"
-model_path = '/home/dhri-dz/train data/my_model_870.h5'
+data_path = "/home/dhri-dz/handsegment/train data"
+model_path = '/home/dhri-dz/handsegment/train data/my_model_950.h5'
 img_height = 256
 img_width = 256
 img_channels = 3
@@ -95,7 +95,7 @@ def vali_generator(vali_size, img_height, img_width, img_channels, img_list, no_
 
 def train():
     
-    data_path = "/home/dhri-dz/train data"
+    data_path = "/home/dhri-dz/handsegment/train data"
     img_height = 256
     img_width = 256
     img_channels = 3
@@ -111,7 +111,7 @@ def train():
     vali_batch, vali_label = vali_generator(10, 256, 256, 3, img_list, 2)
     
     data_generator = Data_Generator(batch_size, img_height, img_width, img_channels, img_list, label_list, no_class)
-    history = model.fit_generator(data_generator, steps_per_epoch =len(img_list)//batch_size+1, epochs = 80, validation_data=(vali_batch,vali_label))    
+    history = model.fit_generator(data_generator, steps_per_epoch =len(img_list)//batch_size+1, epochs = 550, validation_data=(vali_batch,vali_label))    
   
     # test the model , for debugging
     test_list = sorted(os.listdir(data_path + '/rgb'))[3100:3100+10]
@@ -136,13 +136,13 @@ def train():
     
     
 def test():
-    data_path = "/home/dhri-dz/train data"
+    data_path = "/home/dhri-dz/handsegment/train data"
     
     #img_list, label_list = sort_data(data_path)
     #data_generator = Data_Generator(batch_size, img_height, img_width, img_channels, img_list, label_list, no_class)
     history, predicted, test_label = train()
     
-    history.model.save_weights('my_model_950.h5')
+    history.model.save_weights('my_model_1500.h5')
     #newmodel = model_from_yaml(history.model.all.to_yaml()) 
     '''
     model_json = history.model.to_json()
